@@ -1,30 +1,25 @@
 package org.example;
 
-import org.example.Methods.File;
-import org.example.Methods.Plugins;
-import java.awt.image.BufferedImage;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 /**
- * Future tasks:
- *
- * 1. Make so that the images do not have to be grey scale
- * 2. Make an application so that we can publish it
+ * Run the project through the maven tool window
  */
-
-public class Main {
-    public static BufferedImage img = null;
-
+public class Main extends Application {
     public static void main(String[] args) {
-        Plugins plugins = new Plugins();
-        File file = new File();
-
-        img = file.loadImage("/paris.png");
-
-        if (img != null) {
-            file.display(img);
-            img = plugins.heavyBlur(img);
-            file.display(img);
-        }
+        launch(args);
     }
 
+    @Override
+    public void start(Stage primaryStage) {
+        Label label = new Label("Hello, JavaFX!");
+        Scene scene = new Scene(label, 400, 200);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("JavaFX App");
+        primaryStage.show();
+    }
 }
+
