@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-
+<?import javafx.scene.layout.VBox?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
    <top>
@@ -16,21 +19,50 @@
           <Button fx:id="importButton" mnemonicParsing="false" text="Import" />
             <Button fx:id="exportButton" mnemonicParsing="false" text="Export" />
             <Button fx:id="applyButton" mnemonicParsing="false" text="Apply" />
-            <Button fx:id="saveButton" mnemonicParsing="false" text="Save to Project" />
         </items>
       </ToolBar>
    </top>
    <left>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
           <Tab fx:id="singularTab" text="Singular Input">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="325.0" prefWidth="200.0" spacing="20.0">
+                           <children>
+                              <RadioButton fx:id="toGrayScale1" mnemonicParsing="false" text="Gray Scale 1" />
+                              <RadioButton fx:id="toGrayScale2" mnemonicParsing="false" text="Gray Scale 2" />
+                              <RadioButton fx:id="blurGrayScale" mnemonicParsing="false" text="Blur (Black &amp; White)" />
+                              <RadioButton fx:id="blurColor" mnemonicParsing="false" text="Blur (Color)" />
+                              <RadioButton fx:id="heavyBlurGrayScale" mnemonicParsing="false" text="Heavy Blur (Black &amp; White)" />
+                              <RadioButton fx:id="heavyBlurColor" mnemonicParsing="false" text="Heavy Blur (Color)" />
+                              <RadioButton fx:id="edgeDetection" mnemonicParsing="false" text="Edge Detection" />
+                           </children>
+                           <padding>
+                              <Insets left="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </children></AnchorPane>
             </content>
           </Tab>
           <Tab fx:id="multipleTab" text="Multiple Inputs">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="325.0" prefWidth="200.0" spacing="20.0">
+                           <children>
+                              <RadioButton fx:id="pixelateGrayScale" mnemonicParsing="false" text="Pixelate (Black &amp; White)" />
+                              <RadioButton fx:id="pixelateColor" mnemonicParsing="false" text="Pixelate (Color)" />
+                              <RadioButton fx:id="resize" mnemonicParsing="false" text="Resize" />
+                              <RadioButton fx:id="brighten" mnemonicParsing="false" text="Brighten" />
+                              <TextField fx:id="numberField" promptText="Enter Value" />
+                           </children>
+                           <padding>
+                              <Insets left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </children></AnchorPane>
             </content>
           </Tab>
         </tabs>
