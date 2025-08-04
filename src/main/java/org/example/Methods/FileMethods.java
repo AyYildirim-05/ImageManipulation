@@ -1,15 +1,20 @@
 package org.example.Methods;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 import org.example.Main;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import javafx.embed.swing.SwingFXUtils;
 
-public class File {
+
+public class FileMethods {
     /**
      * Method that gets a file
      *
@@ -18,12 +23,12 @@ public class File {
      */
     public BufferedImage loadImage(String path) {
         try {
-            URL resource = Main.class.getResource(path);
-            if (resource == null) {
+            File file = new File(path);
+            if (!file.exists()) {
                 System.out.println("Image not found at: " + path);
                 return null;
             }
-            BufferedImage img = ImageIO.read(resource);
+            BufferedImage img = ImageIO.read(file);
             if (img == null) {
                 System.out.println("⚠️ Could not decode image.");
             }
@@ -34,12 +39,23 @@ public class File {
         }
     }
 
+
     /**
-     * Method that displays image produced'
+     * Converts a BufferedImage to a JavaFX Image.
+     *
+     * @param bufferedImage the BufferedImage to convert
+     * @return the converted JavaFX Image
+     */
+    public Image toImage(BufferedImage bufferedImage) {
+        return SwingFXUtils.toFXImage(bufferedImage, null);
+    }
+
+    /**
+     * Method that displays image produced
      *
      * @param img the image data entered
      */
-    public void display(BufferedImage img) {
+    public void display(BufferedImage img) { //todo should be replaced
         JFrame frame = new JFrame();
         JLabel label = new JLabel();
         label.setIcon(new ImageIcon(img));
@@ -48,5 +64,9 @@ public class File {
         frame.pack();
         frame.setVisible(true);
     }
+
+
+
+
 
 }
